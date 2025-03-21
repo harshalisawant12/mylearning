@@ -1,0 +1,7 @@
+.button-group {
+    display: flex;
+    gap: 10px; /* Adds space between buttons */
+    justify-content: center; /* Centers buttons horizontally */
+    align-items: center; /* Aligns buttons vertically */
+  }
+  
