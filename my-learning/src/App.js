@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Table from "./Components/Table";
-
 import "./App.css";
 import Modal from "./Components/Modal";
 import PopupModal from "./Components/PopupModal";
+import { CountryProvider } from "./Components/Context";
+import Navbar from "./Components/Navbar";
+import { createContext } from "react";
+const context =createContext();
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [popupModalOpen, setPopupModalOpen]=useState(false);
@@ -28,6 +31,10 @@ export default function App() {
   };
   return (
     <div className="App">
+      <CountryProvider>
+      <Navbar/>
+      </CountryProvider>
+     
       <Table rows={rows} deleteRow={(idx)=>{setSelectedRow(idx);setPopupModalOpen(true)}} editRow={handleEditRow}/>
     { popupModalOpen && selectedRow!==null&& rows[selectedRow]&& (<PopupModal onDelete={()=>{handleDeleteRow(selectedRow); setPopupModalOpen(false)}} onCancel={()=>setPopupModalOpen(false)} row={rows[selectedRow]}/>)}
       <button className="btn" onClick={() => setModalOpen(true)}>
