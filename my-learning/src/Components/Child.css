@@ -1,0 +1,18 @@
+.my-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: calc(100vh - 4rem); /* Subtract navbar height */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .my-child h1,
+  .my-child ol {
+    color: #000; /* Set text color to black */
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  

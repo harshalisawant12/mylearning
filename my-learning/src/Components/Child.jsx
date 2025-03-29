@@ -8,7 +8,7 @@ const Child = () => {
     <div>
  
     {country=='india'?(
-        <div>
+        <div className='my-child'>
       <h1>Some destinations in India</h1>
       <ol>
       <li>Manali</li>
@@ -45,4 +45,4 @@ const Child = () => {
   )
 }
 
-export default Child
+export default Child;

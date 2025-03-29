@@ -1,0 +1,31 @@
+.nav-container{
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    gap: 20px;
+    background-color: aqua;
+    width: 100vw;
+    height: 50px;
+}
+
+.home-link{
+
+}
+.destination-link{
+display: flex;
+}
+nav{
+    display: flex;
+    gap: 20px;
+}
+
+.mychild{
+    display: flex;
+}
+.navbar-wrap{
+ 
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      
+}

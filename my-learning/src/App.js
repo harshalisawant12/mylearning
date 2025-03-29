@@ -5,6 +5,8 @@ import Modal from "./Components/Modal";
 import PopupModal from "./Components/PopupModal";
 import { CountryProvider } from "./Components/Context";
 import Navbar from "./Components/Navbar";
+import { Routes,Route, useLocation } from "react-router-dom";
+import Child from "./Components/Child";
 import { createContext } from "react";
 const context =createContext();
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
     { page: "Page 2", description: "This is the Second page", status: "Draft" },
     { page: "Page 3", description: "This is the Third page", status: "Error" },
   ]);
+  const location=useLocation();
   //const [edit, setEdit] = useState(null);
   const handleDeleteRow = (targetIndex) => {
     setRows(rows.filter((_, idx) => idx !== targetIndex));
@@ -33,13 +36,16 @@ export default function App() {
     <div className="App">
       <CountryProvider>
       <Navbar/>
-      </CountryProvider>
-     
-      <Table rows={rows} deleteRow={(idx)=>{setSelectedRow(idx);setPopupModalOpen(true)}} editRow={handleEditRow}/>
-    { popupModalOpen && selectedRow!==null&& rows[selectedRow]&& (<PopupModal onDelete={()=>{handleDeleteRow(selectedRow); setPopupModalOpen(false)}} onCancel={()=>setPopupModalOpen(false)} row={rows[selectedRow]}/>)}
-      <button className="btn" onClick={() => setModalOpen(true)}>
-        Add 
-      </button>
+     <Routes> 
+
+     <Route path="/" element={ <Table rows={rows} deleteRow={(idx)=>{setSelectedRow(idx);setPopupModalOpen(true)}} editRow={handleEditRow} />}/>
+      <Route path="/Destination" element={<Child/>}/>
+     </Routes>
+     { popupModalOpen && selectedRow!==null&& rows[selectedRow]&& (<PopupModal onDelete={()=>{handleDeleteRow(selectedRow); setPopupModalOpen(false)}} onCancel={()=>setPopupModalOpen(false)} row={rows[selectedRow]}/>)}
+     {location.pathname==="/" && (
+          <button className="btn" onClick={() => setModalOpen(true)}>
+            Add
+          </button>) }
       {modalOpen && (
         <Modal
           closeModal={() => {
@@ -48,6 +54,9 @@ export default function App() {
           onSubmit={handleSubmit}
         />
       )}
+    
+        </CountryProvider> 
+     
     </div>
   );
 }
