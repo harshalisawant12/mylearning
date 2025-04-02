@@ -5,8 +5,6 @@ import "./Table.css";
 import { useState } from "react";
 //Commit3 testing 
 
-
-// I am testing PR request in this project
 const Table = ({ rows, deleteRow, editRow }) => {
   const [edit, setEdit] = useState([]);
   const [formState, setFormState] = useState({
